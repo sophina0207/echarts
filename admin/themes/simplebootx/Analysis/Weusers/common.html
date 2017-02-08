@@ -1,0 +1,27 @@
+<admintpl file="header" />
+<link href="__PUBLIC__/analysis/css/weusers/weusers.css"  rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('weusers/getNetredList')}">网红用户</a></li>
+			<li class="active"><a href="{:U('weusers/common')}">普通用户</a></li>
+		</ul>
+		<div class="row-fluid rowDiv">
+			<div class="span4 spanBorder">
+				<div id="main" class="divpie" >	</div>
+			</div>
+			<div class="span8 spanBorder">
+				<div id="map" class="divmap">	</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	var mapUrl="{:U('analysis/weusers/getMapInfo')}";
+	var sexUrl="{:U('analysis/weusers/getSexData')}";
+	</script>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/analysis/js/core/echarts.min.js"></script>
+	<script src="__PUBLIC__/analysis/js/weusers/common.js"></script>
+</body>
+</html>

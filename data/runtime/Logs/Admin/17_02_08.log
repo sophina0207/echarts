@@ -1,0 +1,14 @@
+[ 2017-02-08T10:18:49+08:00 ] ::1 /zbigdata/index.php?g=&m=public&a=dologin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000576s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001138s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002109s ]
+SQL: SHOW COLUMNS FROM `zd_users` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `zd_users` WHERE `user_login` = 'admin' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `zd_role_user` [ RunTime:0.0036s ]
+SQL: SELECT `role_id` FROM zd_role_user a INNER JOIN zd_role as b on a.role_id =b.id  WHERE `user_id` = '1' AND `status` = 1  [ RunTime:0.0010s ]
+SQL: UPDATE `zd_users` SET `user_login`='admin',`user_pass`='###43cd006bf251646e588931c5f2dde530',`user_nicename`='admin',`user_email`='admin@qq.com',`user_url`='',`avatar`=NULL,`sex`='0',`birthday`=NULL,`signature`=NULL,`last_login_ip`='0.0.0.0',`last_login_time`='2017-02-08 10:18:49',`create_time`='2016-07-18 02:10:43',`user_activation_key`='',`user_status`='1',`score`='0',`user_type`='1',`coin`='0',`mobile`='' WHERE `id` = '1' [ RunTime:0.0004s ]
+
+[ 2017-02-08T10:19:00+08:00 ] ::1 /zbigdata/index.php?g=Admin&m=Menu&a=index&menuid=100
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+

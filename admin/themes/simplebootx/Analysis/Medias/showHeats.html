@@ -1,0 +1,57 @@
+<admintpl file="header" />
+<style>
+.well p
+{
+	font-size:20px;
+	line-height:20px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class='table-actions'>
+			<button id="exportExcel"  class="btn btn-primary" >下载报表</button>
+		</div>	
+		<div class="">
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th>排名</th>
+						<th>报道媒体</th>
+						<th>浏览量</th>
+						<th>点赞量</th>
+						<th>评论量</th>
+						<th>分享量</th>
+					</tr>
+				</thead>
+				<tbody>
+					  <if condition="empty($medias)">
+						<tr><th style="text-align:center;" colspan='6'>暂无媒体报道</th></tr>
+					<else />
+					<foreach name="medias" item="item" key='key'>
+						<tr>
+							<td>{$key}</td>
+							<td>{$item.name}</td>
+							<td>{$item.view_count}</td>
+							<td>{$item.like_count}</td>
+							<td>{$item.comment_count}</td>
+							<td>{$item.share_count}</td>
+						</tr>
+					</foreach>
+					</if>  
+				</tbody>
+			</table>
+		</div>
+		<div class="pageShow pagination">
+			{$page}
+		</div>
+	</div>
+<script>
+	var exportUrl="{:U('analysis/medias/exportMediasHeats')}";
+	$('#exportExcel').click(function(){
+		window.open(exportUrl);
+	})
+</script>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

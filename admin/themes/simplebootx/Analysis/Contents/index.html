@@ -1,0 +1,70 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<div class="well form-search" >
+			<b>类型：</b><select style="width:120px" class="contentsType" name='type'>
+					<foreach name='type' key='key' item='item'>
+						<option value="{$key}">{$item}</option>
+					</foreach>
+			</select>&nbsp;&nbsp;
+			<button id="lastday" class="date-search btn btn-primary" data-value="{$lastDay}" >昨天</button>
+			<button class="date-search btn " data-value="{$today}" >今天</button>
+			<button class="date-search btn sevenDate" data-value="{$sevenDay}" >最近七天</button>
+			<b>From:</b>
+			<input class="from-date " type="date" name="start_time"  value="{$start_day}" style="width: 180px;" autocomplete="off">
+			<b>To:</b>
+			<input class="to-date " autocomplete="off" type="date"  name="end_time" value="{$end_day}" style="width: 180px;"> 
+		</div>
+			<div class="orderdiv table-actions" data-value="{$checked}">
+				<button data-value="view_count" class="order btn btn-primary btn-small js-ajax-submit" type="submit"  data-subcheck="true">浏览量</button>
+				<button data-value="like_count" class="order btn   btn-small js-ajax-submit" type="submit"  data-subcheck="true">点赞量</button>
+				<button data-value="comment_count" class="order btn  btn-small js-ajax-submit" type="submit"  data-subcheck="true">评论量</button>
+				<button data-value="share_count" class="order btn   btn-small js-ajax-submit" type="submit"  data-subcheck="true">分享量</button>
+				<button data-value="upload_count" class="order btn   btn-small js-ajax-submit" type="submit"  data-subcheck="true">下载量</button>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			<!-- 	<button data-value="user_status_in" class="where btn btn-primary  btn-small js-ajax-submit" type="submit"  data-subcheck="true">比赛中</button>
+				<button data-value="user_status_out" class="where btn  btn-small js-ajax-submit" type="submit"  data-subcheck="true">已淘汰</button> -->
+			</div>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="50">排名</th>
+						<th>内容</th>
+						<th >浏览量</th>
+						<th>点赞量</th> 	
+						<th >分享量</th>
+						<th >评论量</th>
+						<th >下载量</th>
+					</tr>
+				</thead>
+				<tbody>
+					  <if condition="$data['status'] == 0">
+						<tr><th colspan='7' style="text-align:center">{$data.msg}</th></tr>
+					<else />
+					<foreach name="data['contents']" item="item" key='key'>
+						<tr>
+							<td width="50">{$key}</td>
+							<td><a  target="_black" href="{$item.url}">{$item.title}</a></td>
+							<td >{$item.view_count}</td>
+							<td >{$item.like_count}</td>
+							<td >{$item.share_count}</td>
+							<td >{$item.comment_count}</td>
+							<td >{$item.upload_count}</td>
+						</tr>
+					</foreach>
+					</if>  
+				</tbody>
+			</table>
+			<div class="pageShow pagination">
+				{$data.page}
+			</div>
+	</div>
+	<script>
+		var getListUrl="{:U('analysis/contents/index')}";
+	</script>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/analysis/js/contents/contents.js"></script>
+</body>
+</html>
+		

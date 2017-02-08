@@ -1,0 +1,52 @@
+<admintpl file="header" />
+<style>
+.create
+{
+	display:inline-block;
+	margin-right:50px;
+	border:black 1px solid;
+	padding:10px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">价值产生</a></li>
+		</ul>
+		<div class="well form-search" >
+			<div class="create"><p>总参与人数</p>
+				<p>{$games.take_users_count}人</p>
+			</div>
+			<div class="create"><p>影响人数</p>
+				<p>{$games.affect_users_count}人</p>
+			</div>
+			<div class="create"><p>加入网红</p>
+				<p>{$games.netred_count}人</p>
+			</div>
+			<div class="create btn btn-primary">下载报表</div>
+		</div>
+		<div class="js-ajax-form">
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="100">日期</th>
+						<th width="150">报名人数</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="data.gamesInfo" item='game'>
+						<tr>
+							<td>{$game.date}</td>
+							<td>{$game.count}</td>
+						</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$data.show}</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/analysis/js/pages/pages.js"></script>
+</body>
+</html>

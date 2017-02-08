@@ -1,0 +1,52 @@
+[ 2017-02-08T10:19:10+08:00 ] ::1 /zbigdata/index.php?g=Analysis&m=Weusers&a=increase&menuid=163
+NOTIC: D方法实例化没找到模型类Common\Model\GamesUsersModel
+
+[ 2017-02-08T10:19:12+08:00 ] ::1 /zbigdata/index.php/analysis/weusers/getTargetDatas?from=2017-02-01&to=2017-02-08&target=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000464s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000679s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001544s ]
+SQL: SHOW COLUMNS FROM `zd_users` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `zd_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `zd_we_users` [ RunTime:0.0024s ]
+NOTIC: D方法实例化没找到模型类Common\Model\GamesUsersModel
+SQL: SHOW COLUMNS FROM `zd_games_users` [ RunTime:0.0024s ]
+SQL: SHOW COLUMNS FROM `zd_games_fans` [ RunTime:0.0026s ]
+SQL: SELECT FROM_UNIXTIME(subscribe_time,'%Y-%m-%d' ) as date,count(*) as count FROM `zd_games_fans` join zd_we_users on zd_we_users.openid = zd_games_fans.openid  WHERE (  game_id = 3  and  FROM_UNIXTIME(subscribe_time,'%Y-%m-%d' ) >= '2017-02-01' and  FROM_UNIXTIME(subscribe_time,'%Y-%m-%d' ) <= '2017-02-08' ) GROUP BY FROM_UNIXTIME(subscribe_time,'%Y-%m-%d' ) ORDER BY FROM_UNIXTIME(subscribe_time,'%Y-%m-%d' ) asc  [ RunTime:1.9519s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\www\zbigdata\application\Analysis\Controller\WeusersController.class.php 第 77 行.
+NOTIC: [8] Undefined index: url E:\www\zbigdata\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2017-02-08T10:19:22+08:00 ] ::1 /zbigdata/index.php?g=Analysis&m=Weusers&a=netredIncrease&menuid=168
+NOTIC: D方法实例化没找到模型类Common\Model\GamesUsersModel
+
+[ 2017-02-08T10:19:22+08:00 ] ::1 /zbigdata/index.php/analysis/weusers/getNetIncrease?from=2017-02-01&to=2017-02-08
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000459s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000647s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001467s ]
+SQL: SHOW COLUMNS FROM `zd_users` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `zd_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `zd_we_users` [ RunTime:0.0024s ]
+NOTIC: D方法实例化没找到模型类Common\Model\GamesUsersModel
+SQL: SHOW COLUMNS FROM `zd_games_users` [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `zd_games_users` [ RunTime:0.0025s ]
+SQL: SELECT date_format(create_date,'%Y-%m-%d' ) as date,count(*) as count FROM `zd_games_users` WHERE (  game_id = 3  and  date_format(create_date,'%Y-%m-%d' ) >= '2017-02-01' and  date_format(create_date,'%Y-%m-%d' ) <= '2017-02-08' ) GROUP BY date_format(create_date,'%Y-%m-%d' ) ORDER BY date_format(create_date,'%Y-%m-%d' ) asc  [ RunTime:0.0008s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\www\zbigdata\application\Analysis\Controller\WeusersController.class.php 第 431 行.
+NOTIC: [8] Undefined index: url E:\www\zbigdata\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2017-02-08T10:19:25+08:00 ] ::1 /zbigdata/index.php?g=Analysis&m=Weusers&a=getNetredList&menuid=164
+NOTIC: D方法实例化没找到模型类Common\Model\GamesUsersModel
+
+[ 2017-02-08T10:19:27+08:00 ] ::1 /zbigdata/index.php/analysis/pages/searchDate?value=2017-02-07
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000532s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000790s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001766s ]
+NOTIC: [2048] Declaration of Analysis\Controller\PagesController::show() should be compatible with Think\Controller::show($content, $charset = '', $contentType = '', $prefix = '') E:\www\zbigdata\application\Analysis\Controller\PagesController.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `zd_users` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `zd_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zd_pages` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `zd_pages_views` [ RunTime:0.0026s ]
+SQL: SELECT `name`,sum(view_count) as view_count FROM `zd_pages` join zd_pages_views on zd_pages.id = zd_pages_views.page_id  WHERE ( zd_pages.game_id = 3 and date_format(view_date,'%Y-%m-%d') = '2017-02-07' ) GROUP BY zd_pages.id ORDER BY view_count desc LIMIT 0,5   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: url E:\www\zbigdata\application\Common\Controller\AppframeController.class.php 第 24 行.
+

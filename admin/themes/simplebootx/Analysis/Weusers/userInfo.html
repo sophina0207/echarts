@@ -1,0 +1,88 @@
+<admintpl file="header" />
+</head>
+<link rel="stylesheet" href="__public__/analysis/css/weusers/weusers.css" />
+<style>
+.wrap_2{
+	margin-right:100px;
+}
+.flow1_2
+{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:60px;
+}
+.userInfo{
+	border-bottom-style:solid;
+	border-bottom-color:#abcdef;
+	padding-bottom:10px;
+}
+.headimgurl{
+width:140px;
+height:140px;
+}
+.game_info{
+	margin-top:20px;
+	margin-left:20px;
+	width:300px;
+}
+.game_info label{
+	display:block;
+	text-align:center;
+	margin-bottom:20px;
+}
+.posts-div
+{
+	border-left-style:solid;
+	border-left-color:#abcdef;
+}
+.posts{
+	display:inline-block;
+	margin-left:30px;
+	margin-top:20px;
+	width:200px;
+	height:200px;
+	overflow:hidden;
+}
+
+</style>
+<body>
+	<div class="wrap wrap_2">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('weusers/getNetredList')}">网红用户</a></li>
+			<li ><a href="{:U('weusers/common')}">普通用户</a></li>
+			<li class="active"><a href="{:U('analysis/weusers/getUserInfo',array('id'=>$id))}">网红信息</a></li>
+		</ul>
+		<div class="row-fluid userInfo">
+			<div class="span4">
+				<img class="headimgurl img-circle" src="{$user.headimgurl}">
+			<!--- 	<lable><b>微信昵称：</b>{$user.nickname}</lable>-->
+			</div>
+			<div class='span8'>
+				<div class="flow1_2">
+					<lable><b>投票数：</b>{$user.vote_count}</lable>
+					<!-- <lable><b>点赞数：</b>{$user.like_count}</lable>
+					<lable><b>分享数：</b>{$user.share_count}</lable> -->
+					<lable><b>评论数：</b>{$user.comment_count}</lable>
+				</div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span6">
+				<div class="game_info">
+					<label><b>参赛资料</b></label>
+					<p><b>参赛名称：</b>{$user.name}</p>
+					<p><b>电话:</b>{$user.tel}</p>
+					<p><b>比赛宣言:</b>{$user.slogan}</p>
+					<p><b>报名时间:</b>{$user.start_date}</p>
+				</div>
+			</div>
+			<div class="span6 posts-div">
+				<foreach name="user['potos']" item='photo'>
+					<div class="posts" ><img src="{:sp_get_asset_upload_path($photo)}"></div>
+				</foreach>
+			</div>
+		</div>
+		</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

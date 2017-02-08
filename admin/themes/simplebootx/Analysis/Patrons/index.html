@@ -1,0 +1,115 @@
+<admintpl file="header" />
+<style>
+.well
+{
+	height:90px;
+}
+.patronTop div
+{
+	display:inline-block;
+	margin-left:50px;
+	padding:10px;
+	width:120px;
+	height:90px;
+	text-align:center;
+	
+}
+.patronTop div p:first-child
+{
+	font-size:20px;
+	font-weight:blod;
+}
+.patronModel{
+	width:400px;
+	margin:auto;
+	margin-top:20px;
+}
+.patronModel label b
+{
+	display:inline-block;
+	width:100px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="patronTop well" >
+			<div>
+				<p><b>赞助商</b></p>
+				<p>{$count}家</p>
+			</div>			
+			<div>
+				<p><b>赞助比</b></p>
+				<p>{$ratioSum}%</p>
+			</div>		
+		</div>
+		<div class='table-actions'>
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+				添加赞助商
+				</button>
+			<button id="exportExcel"  class="btn btn-primary" >下载报表</button>
+			</div>	
+			<div></div>
+		<div class="">
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th>赞助商名</th>
+						<th>赞助商LOGO</th>
+						<th>赞助项</th>
+						<th>赞助时间</th>
+						<th>活动赞比</th>
+					</tr>
+				</thead>
+				<tbody>
+					  <if condition="empty($patrons)">
+						<tr><th style="text-align:center;" colspan='4'>暂无赞助</th></tr>
+					<else />
+					<foreach name="patrons" item="item" key='key'>
+						<tr>
+							<td>{$item.name}</td>
+							<td><a target="_blank" href="{$item.logo}">查看</a></td>
+							<td>{$item.items}</td>
+							<td>{$item.date}</td>
+							<td>{$item.ratio}%</td>
+						</tr>
+					</foreach>
+					</if>  
+				</tbody>
+			</table>
+		</div>
+		<div class="pageShow pagination">
+			{$page}
+		</div>
+	</div>
+<div class="modal fade" id="myModal" tabindex="-8" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<form action="{:U('patrons/add_post')}" method='post' enctype="multipart/form-data">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+	</button>
+	<h4 class="modal-title" id="myModalLabel" style="text-align:center;">添加赞助商</h4></div>
+		<div class="modal-body patronModel">
+				<label><b>赞助商名：</b><input type='text' required name='name' placeholder='添加赞助商名称'/></label>
+				<label><b>赞助商logo：</b><input type='file' required name='logo' /></label>
+				<label><b>赞助时间：</b><input type='date' required name='date' value=''/></label>
+				<label><b>赞助比：</b><input type='text' min='0' max='100' required name='ratio' placeholder='添加赞助比,如：20'/>%</label>
+				<label><b>赞助项目：</b><textarea name='items' required style="resize: none;"></textarea></label>
+		</div>
+		<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+		</button>
+		<button type="submit" class="btn btn-primary">添加</button>
+	</div>
+	</div>
+	</div>
+	</form>
+</div>
+<script>
+		var exportUrl="{:U('analysis/patrons/exportExcel')}";
+</script>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/analysis/js/patrons/patrons.js"></script>
+</body>
+</html>

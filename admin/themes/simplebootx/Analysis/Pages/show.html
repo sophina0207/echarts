@@ -1,0 +1,72 @@
+<admintpl file="header" />
+<style>
+.pageShow
+{
+	width:100%;
+	height:40px;
+	position:relative;
+	margin:10px;
+}
+.urlText{
+	display:inline-block;
+	position:absolute;
+	height:40px;
+
+	overflow:hidden;
+	width:130px;
+	text-align:center;
+}
+.urlText b
+{
+	line-height:40px;
+}
+.urlImg{
+	display:inline-block;
+	width:70%;
+	height:40px;
+	background-color:#abcdef;
+	border-radius:10px;
+	margin-left:150px;
+	cursor:pointer;
+}
+</style>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<div class="well form-search" >
+			<b>时间选择:&nbsp;&nbsp;</b>
+			<button id="lastday" class="date-search btn btn-primary" data-value="{$lastDay}" >昨天</button>
+			<button class="date-search btn " data-value="{$today}" >今天</button>
+			<button class="date-search btn sevenDate" data-value="{$sevenDay}" >最近七天</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<b>From:</b>
+			<input class="from-date " type="date" name="start_time"  value="{$start_day}" style="width: 180px;" autocomplete="off">
+			<b>To:</b>
+			<input class="to-date " autocomplete="off" type="date"  name="end_time" value="{$end_day}" style="width: 180px;"> 
+		</div>
+		<div></div>
+		<div class='pageList'>
+			<!-- <div class='pageShow'>
+				<span class='urlText'><b>Url1:</b></span>
+				<span class='urlImg'></span>
+			</div>
+ -->		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/analysis/js/pages/page.js"></script> 
+	<script>var fromToUrl="{:U('analysis/pages/FromToDate')}";</script>
+	<script>var searchUrl="{:U('analysis/pages/searchDate')}";</script>
+	<script>
+		setCookie('refersh_time', 0);
+		function refersh_window() {
+			var refersh_time = getCookie('refersh_time');
+			if (refersh_time == 1) {
+				window.location.reload();
+			}
+		}
+		setInterval(function() {
+			refersh_window()
+		}, 2000);
+	</script>
+</body>
+</html>
